@@ -126,7 +126,10 @@ TARGET_PROVIDES_POWERHAL := true
 BOARD_HAL_STATIC_LIBRARIES := libdumpstate.msm8996
 
 # MK Hardware
-BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/mkhw
+BOARD_HARDWARE_CLASS += \
+    hardware/mokee/mkhw \
+    $(PLATFORM_PATH)/mkhw
+BOARD_USES_MOKEE_HARDWARE := true
 
 # CNE and DPM
 TARGET_LDPRELOAD := libNimsWrap.so
