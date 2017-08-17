@@ -57,14 +57,14 @@ if [ -z "$SRC" ]; then
 fi
 
 # Initialize the helper for common
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true $clean_vendor
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$MK_ROOT" true $clean_vendor
 
 extract "$MY_DIR"/proprietary-files-qc-perf.txt "$SRC" "$SECTION"
 
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
 
 # Initialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false $clean_vendor
+setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT" false $clean_vendor
 
 extract "$MY_DIR"/../$DEVICE/proprietary-files.txt "$SRC" "$SECTION"
 
