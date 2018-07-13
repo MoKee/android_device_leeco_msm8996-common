@@ -626,12 +626,13 @@ service perfd /vendor/bin/perfd
    socket perfd seqpacket 0666 root system
    writepid /dev/cpuset/system-background/tasks
 
-service thermal-engine /vendor/bin/thermal-engine
+service thermal-engine /vendor/bin/thermal-engine -c ${sys.qcom.thermalcfg:-/vendor/etc/thermal-engine-8996.conf}
    class main
    user root
    socket thermal-send-client stream 0666 system system
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
+   socket thermal-send-rule stream 0660 system system
    group root
    writepid /dev/cpuset/system-background/tasks
 
@@ -645,11 +646,6 @@ service adsprpcd /vendor/bin/adsprpcd
    class main
    user media
    group media
-
-service audiod /vendor/bin/audiod
-   class late_start
-   user system
-   group system
 
 service imsqmidaemon /vendor/bin/imsqmidaemon
     class main
@@ -735,13 +731,6 @@ service mdtpd /system/vendor/bin/mdtpd
     user root
     group system radio drmrpc
 
-service iop /system/vendor/bin/iop
-    class main
-    user root
-    group root
-    disabled
-    socket iop seqpacket 0666 root system
-
 service ssr_setup /system/bin/ssr_setup
     oneshot
     disabled
@@ -792,7 +781,6 @@ on property:vold.decrypt=trigger_restart_min_framework
 
 on property:vold.decrypt=trigger_restart_framework
     start audio-hal-2-0
-    start config_bt_addr
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
@@ -836,13 +824,6 @@ service start_hci_filter /system/vendor/bin/wcnss_filter
     group bluetooth diag system wakelock
     seclabel u:r:wcnss_filter:s0
     disabled
-
-service config_bt_addr /system/vendor/bin/btnvtool -O
-    class core
-    user bluetooth
-    group bluetooth radio
-    oneshot
-    seclabel u:r:btnvtool:s0
 
 on property:wc_transport.start_root=true
     start hci_filter_root
@@ -951,10 +932,11 @@ on property:crypto.driver.load=1
     insmod /system/lib/modules/qce.ko
     insmod /system/lib/modules/qcedev.ko
 
-service atfwd /system/bin/ATFWD-daemon
+service atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    writepid /dev/cpuset/system-background/tasks
 
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
@@ -992,12 +974,6 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     user root
     group root
     disabled
-    writepid /dev/cpuset/system-background/tasks
-
-service qseeproxydaemon /vendor/bin/qseeproxydaemon
-    class late_start
-    user system
-    group system
     writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /system/bin/sh /init.qcom.sh
