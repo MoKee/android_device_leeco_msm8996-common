@@ -19,12 +19,9 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-mokee
 
-# System properties
--include $(LOCAL_PATH)/system_prop.mk
-
-# Ramdisk
+# Init
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/leeco/msm8996-common/rootdir/root,root)
+    $(call find-copy-subdir-files,*,${LOCAL_PATH}/prebuilt/vendor,$(TARGET_COPY_OUT_VENDOR))
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -68,9 +65,9 @@ PRODUCT_COPY_FILES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/atmel_ts_key.kl:system/usr/keylayout/atmel_ts_key.kl \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/qpnp_pon.kl:system/usr/keylayout/qpnp_pon.kl
+    $(LOCAL_PATH)/keylayout/atmel_ts_key.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/atmel_ts_key.kl \
+    $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
+    $(LOCAL_PATH)/keylayout/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -133,11 +130,12 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.device@1.0.so \
     android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
     camera.device@3.2-impl \
+    camera.device@1.0-impl \
     camera.msm8996 \
-    libshims_camera \
-    libshims_qcamera-daemon \
     Snap
 
 PRODUCT_PACKAGES += \
@@ -183,15 +181,9 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
-# For android_filesystem_config.h
+# For config.fs
 PRODUCT_PACKAGES += \
     fs_config_files
-
-# Fingerprint sensor
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service-custom \
-    fingerprintd \
-    fingerprint.msm8996
 
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
@@ -223,7 +215,9 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0
+    android.hidl.base@1.0_system \
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0_system
 
 # IMS
 PRODUCT_PACKAGES += \
@@ -314,6 +308,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librecovery_updater_leeco
 
+# Releasetools
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/bin/deunify.sh:install/bin/deunify.sh \
+    $(LOCAL_PATH)/prebuilt/bin/sgdisk:install/bin/sgdisk \
+    $(LOCAL_PATH)/prebuilt/bin/unlock-vendor.sh:install/bin/unlock-vendor.sh
+
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
@@ -359,7 +359,11 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
-# VNDK-SP:
+# VNDK
+PRODUCT_PACKAGES += \
+    vndk_package
+
+# VNDK-SP
 PRODUCT_PACKAGES += \
     vndk-sp
 
@@ -368,6 +372,7 @@ PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-impl \
     android.hardware.vr@1.0-service \
     vr.msm8996
+
 # WiFi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \

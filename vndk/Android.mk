@@ -12,7 +12,6 @@ LOCAL_MULTILIB := first
 LOCAL_MODULE_TAGS := optional
 LOCAL_INSTALLED_MODULE_STEM := $1.so
 LOCAL_MODULE_SUFFIX := .so
-LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_RELATIVE_PATH := vndk-sp
 include $$(BUILD_PREBUILT)
 
@@ -27,7 +26,6 @@ LOCAL_MULTILIB := 32
 LOCAL_MODULE_TAGS := optional
 LOCAL_INSTALLED_MODULE_STEM := $1.so
 LOCAL_MODULE_SUFFIX := .so
-LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_RELATIVE_PATH := vndk-sp
 include $$(BUILD_PREBUILT)
 endif # TARGET_TRANSLATE_2ND_ARCH is not true
@@ -36,9 +34,16 @@ endef
 
 $(foreach lib,$(VNDK_SP_LIBRARIES),\
     $(eval $(call define-vndk-sp-lib,$(lib))))
+$(foreach lib,$(EXTRA_VENDOR_LIBRARIES),\
+    $(eval $(call define-vndk-lib,$(lib),vndk-ext-gen,,true)))
+$(foreach lib,$(HW_VENDOR_LIBRARIES),\
+    $(eval $(call define-vndk-lib,$(lib),vndk-hw-gen,hw,true)))
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := vndk-sp
 LOCAL_MODULE_TAGS := optional
-LOCAL_REQUIRED_MODULES := $(addsuffix .vndk-sp-gen,$(VNDK_SP_LIBRARIES))
+LOCAL_REQUIRED_MODULES := \
+    $(addsuffix .vndk-sp-gen,$(VNDK_SP_LIBRARIES)) \
+    $(addsuffix .vndk-ext-gen,$(EXTRA_VENDOR_LIBRARIES)) \
+    $(addsuffix .vndk-hw-gen,$(HW_VENDOR_LIBRARIES))
 include $(BUILD_PHONY_PACKAGE)
