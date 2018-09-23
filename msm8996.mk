@@ -272,6 +272,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libextmedia_jni \
+    libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
@@ -279,7 +280,8 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
-    libstagefrighthw
+    libstagefrighthw \
+    android.hardware.media.omx@1.0-impl
 
 # Power
 PRODUCT_PACKAGES += \
@@ -310,6 +312,7 @@ PRODUCT_PACKAGES += \
 
 # Releasetools
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/bin/toybox:install/bin/toybox \
     $(LOCAL_PATH)/prebuilt/bin/deunify.sh:install/bin/deunify.sh \
     $(LOCAL_PATH)/prebuilt/bin/sgdisk:install/bin/sgdisk \
     $(LOCAL_PATH)/prebuilt/bin/unlock-vendor.sh:install/bin/unlock-vendor.sh
@@ -392,6 +395,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     kernel/leeco/msm8996/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+
+# Create a symlink for libcppf.so and liboemcrypto.so which expects the cppf firmware at
+# /system/etc/firmware to be able to move cppf firmware (via hex edit) to /vendor a link 
+# /vendor/firmware/drm is created, which points to /vendor/firmware
+BOARD_VENDOR_EXTRA_SYMLINKS += \
+    /vendor/firmware:/firmware/drm
 
 # Model is set via init library
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \

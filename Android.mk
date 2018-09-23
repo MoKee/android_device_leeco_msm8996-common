@@ -111,6 +111,16 @@ $(RFS_MSM_SLPI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(RFS_MSM_ADSP_SYMLINKS) $(RFS_MSM_MPSS_SYMLINKS) $(RFS_MSM_SLPI_SYMLINKS)
 
+VENUS_IMAGES := venus.b00 venus.b01 venus.b02 venus.b03 venus.b04 venus.mdt
+VENUS_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(VENUS_IMAGES)))
+$(VENUS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "VENUS firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(VENUS_SYMLINKS)
+
 WCNSS_INI_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
 $(WCNSS_INI_SYMLINK): $(LOCAL_INSTALLED_MODULE)
 	@echo "WCNSS config ini link: $@"
@@ -136,5 +146,34 @@ $(BT_FIRMWARE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /bt_firmware/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(BT_FIRMWARE_SYMLINKS)
+
+###########################################################
+## Commands for copying files
+###########################################################
+
+# Define a rule to create a symlink.  For use via $(eval).
+# $(1): symlink target
+# $(2): symlink file name
+define create-symlink
+$(2):
+	@echo "Symbolic link: $2 -> $1"
+	mkdir -p $(dir $2)
+	rm -rf $2
+	ln -sf $1 $2
+endef
+
+# -----------------------------------------------------------------
+# Define rules to create BOARD_SYSTEM_EXTRA_SYMLINKS defined by
+# the product. Very similar in role to the ramdisk board-defined
+# symlinks created in system/core/rootdir/Android.mk.
+# BOARD_SYSTEM_EXTRA_SYMLINKS is a list of <target>:<link_name>.
+ifdef BOARD_VENDOR_EXTRA_SYMLINKS
+   $(foreach pair, $(BOARD_VENDOR_EXTRA_SYMLINKS), \
+     $(eval target := $(call word-colon,1,$(pair))) \
+     $(eval link_name := $(call word-colon,2,$(pair))) \
+     $(eval full_link_name := $(call append-path,$(PRODUCT_OUT)/$(TARGET_COPY_OUT_VENDOR),$(link_name))) \
+     $(eval $(call create-symlink,$(target),$(full_link_name))) \
+     $(eval ALL_DEFAULT_INSTALLED_MODULES += $(full_link_name)))
+endif
 
 endif
