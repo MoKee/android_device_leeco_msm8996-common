@@ -32,6 +32,8 @@ import /vendor/etc/init/hw/init.device.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
+    chown root system /dev/kmsg
+    chmod 0620 /dev/kmsg
 
     symlink /data/tombstones /tombstones
     mkdir /dsp 0771 media media
@@ -42,10 +44,18 @@ on early-init
 
 on init
     # Set permissions for persist partition
-    mkdir /persist 0771 system system
+    mkdir /persist 0771 root system
 
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
+
+    # QSEE rpmb listener need symlink for bootdevice
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+    # Start qseecomd early as we mount /system early
+    # vold needs keymaster which needs qseecomd
+    start qseecomd
 
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
@@ -55,9 +65,6 @@ on init
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
 on fs
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}
-    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-
     mount_all /vendor/etc/fstab.qcom
 
     # Restorecon
@@ -65,10 +72,6 @@ on fs
 
     # Start HW service manager early
     start hwservicemanager
-
-    # qseecomd needs /dev/block/bootdevice
-    # vold needs keymaster that needs qseecomd
-    start qseecomd
 
 on late-fs
     # boot time fs tune
@@ -78,10 +81,10 @@ on late-fs
     write /sys/block/sda/queue/nr_requests 256
 
 on post-fs
-    write /dev/ipa 1
-
     # Wait qseecomd started
     wait_for_prop sys.listeners.registered true
+
+    write /dev/ipa 1
 
 on post-fs-data
     # msm specific files that need to be created on /data
@@ -100,14 +103,11 @@ on post-fs-data
     mkdir /persist/data/tz 0700 system system
     mkdir /persist/qc_senseid 0700 system system
     mkdir /data/misc/dts 0770 media audio
-    mkdir /data/usf 0700 system system
     mkdir /data/misc/tloc/ 0700 system drmrpc
     mkdir /data/misc/qvop 0660 system system
-    mkdir /data/misc/audio_pp 0771 media audio
 
     # NFC
     mkdir /data/nfc
-    mkdir /data/oemnvitems 0771 radio radio
 
     # Sensors
     mkdir /data/misc/sensors
@@ -124,6 +124,19 @@ on post-fs-data
     mkdir /data/fpc_images/enroll 0770 system system
     mkdir /data/fpc 0770 system system
 
+    # Create directory used for display
+    mkdir /persist/display 0770 system graphics
+
+    # Create vpp directory
+    mkdir /persist/vpp 0770 media media
+
+    # load WIGIG platform driver
+    insmod /vendor/lib/modules/msm_11ad_proxy.ko
+
+    # Create hvdcp_opti directory
+    mkdir /persist/hvdcp_opti 0770 root system
+
+# msm specific files that need to be created on /data
     mkdir /data/vendor/misc 01771 system system
 
     # Create directory used by display clients
@@ -134,9 +147,6 @@ on post-fs-data
 
     # Create directory used by media clients
     mkdir /data/vendor/media 0770 mediacodec media
-
-    # Create directory used for camera
-    mkdir /data/vendor/camera 0770 camera camera
 
     # Create directories for Fingerprint
     mkdir /data/vendor/misc/qti_fp 0770 system system
@@ -157,9 +167,8 @@ on post-fs-data
     # Create directory for voiceprint
     mkdir /data/misc/qvop 0771 system system
 
-    # Create folder for mm-qcamera-daemon
-    mkdir /data/misc/camera 0770 camera camera
-    mkdir /data/vendor/camera 0770 camera camera
+    # Create folder for our hex edited mm-qcamera-daemon and camera blobs
+    mkdir /data/vendor/qcam 0770 camera camera
 
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -170,6 +179,8 @@ on post-fs-data
     mkdir /data/vendor/ramdump 0771 root system
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/misc/bluetooth 0770 bluetooth bluetooth
+    mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
+    mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -201,11 +212,7 @@ on post-fs-data
     chown system system /data/dpm/nsrm
 
     # Create the directories used by the audio subsystem
-    mkdir /data/vendor/audio/ 0770 media audio
     mkdir /data/vendor/misc/audio 0770 audio audio
-    # legacy
-    mkdir /data/audio/ 0770 media audio
-    mkdir /data/misc/audio 0770 audio audio
 
     # Create the directories used by the audio delta files
     mkdir /data/vendor/audio/acdbdata 0770 media audio
@@ -221,7 +228,7 @@ on post-fs-data
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
-    chown system system /persist
+    chown root system /persist
     chmod 0771 /persist
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
@@ -234,36 +241,18 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
-    mkdir /data/system 0775 system system
-    #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
-
     #Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
     mkdir /data/vendor/location/mq 0770 gps gps
     mkdir /data/vendor/location/xtwifi 0770 gps gps
-
-    # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
-
-    # Create directory from IMS services
-    mkdir /data/shared 0755
-    chown system system /data/shared
-
-    # Create directory for FOTA
-    mkdir /data/fota 0771
-    chown system system /data/fota
-
-    #Create directory for hostapd
-    mkdir /data/hostapd 0770 system wifi
+    mkdir /dev/socket/location 0770 gps gps
+    mkdir /dev/socket/location/mq 0770 gps gps
+    mkdir /dev/socket/location/xtra 0770 gps gps
 
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
     setprop vold.post_fs_data_done 1
-
-    #Create a folder for SRS to be able to create a usercfg file
-    mkdir /data/data/media 0770 media media
 
     # Create FM dir for patchdownloader
     mkdir /data/misc/fm 0770 system system
@@ -339,6 +328,7 @@ on early-boot
     # Allow subsystem (modem etc) debugging
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
+    chown root audio /sys/kernel/boot_adsp/boot
 
 on boot
     # Secure touch
@@ -416,6 +406,11 @@ on boot
     chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_btwrite
     chown system system /sys/module/sco/parameters/disable_esco
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
+    chown system system /sys/module/msm_core/parameters/polling_interval
+    chown system system /sys/module/msm_core/parameters/disabled
+    chown system system /sys/kernel/debug/msm_core/enable
+    chown system system /sys/kernel/debug/msm_core/ptable
+    chown system system /sys/kernel/boot_slpi/ssr
     chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
@@ -447,9 +442,6 @@ on boot
     chmod 2770 /dev/socket/qmux_bluetooth
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
-
-    # Remove SUID bit for iproute2 ip tool
-    chmod 0755 /system/bin/ip
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
@@ -582,12 +574,6 @@ service thermal-engine /vendor/bin/thermal-engine -c ${sys.qcom.thermalcfg:-/ven
    group root
    writepid /dev/cpuset/system-background/tasks
 
-service time_daemon /vendor/bin/time_daemon
-   class late_start
-   user root
-   group root
-   writepid /dev/cpuset/system-background/tasks
-
 service adsprpcd /vendor/bin/adsprpcd
    class main
    user media
@@ -667,17 +653,6 @@ service mdtpd /vendor/bin/mdtpd
     class late_start
     user root
     group system radio drmrpc
-
-service ssr_setup /vendor/bin/ssr_setup
-    oneshot
-    disabled
-
-on property:persist.sys.ssr.restart_level=*
-    start ssr_setup
-
-on property:persist.sys.ssr.enable_ramdumps=0
-    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-
 on property:persist.radio.atfwd.start=false
     stop atfwd
 
@@ -704,9 +679,6 @@ on property:bluetooth.dun.status=running
 on property:bluetooth.dun.status=stopped
     stop bt-dun
 
-on property:ro.bluetooth.ftm_enabled=true
-    start ftmd
-
 on property:vold.decrypt=trigger_reset_main
     stop audio-hal-2-0
 
@@ -726,8 +698,8 @@ on property:persist.env.fastdorm.enabled=true
 
 service cnd /vendor/bin/cnd
     class main
-    socket cnd stream 660 root inet
-    group root wakelock
+    user system
+    group system wifi inet radio wakelock net_admin
     writepid /dev/cpuset/system-background/tasks
 
 service dpmQmiMgr /vendor/bin/dpmQmiMgr
@@ -743,7 +715,9 @@ service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
 service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
-    group root system wakelock
+    group system wakelock
+    shutdown critical
+    ioprio rt 0
     writepid /dev/cpuset/system-background/tasks
 
 service tftp_server /vendor/bin/tftp_server
@@ -776,13 +750,6 @@ service hci_filter_root /vendor/bin/wcnss_filter
     group bluetooth oem_2901 system
     seclabel u:r:wcnss_filter:s0
     disabled
-
-service ftmd /vendor/bin/ftmdaemon
-    class late_start
-    user root
-    group bluetooth net_bt_admin misc oem_2901 net_bt
-    disabled
-    oneshot
 
 service netmgrd /vendor/bin/netmgrd
     class main
@@ -845,18 +812,11 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service cnss_diag /vendor/bin/cnss_diag -q -f
-    class main
-    user root
-    group root
-    oneshot
-    # cnss diag cause power consumption bigger sometimes, so disable it until solve it
-    disabled
-
 service cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
     user system
     group system inet net_admin wifi
+    capabilities NET_ADMIN
 
 on property:sys.powerctl=*
     stop cnss-daemon
@@ -866,10 +826,6 @@ service loc_launcher /vendor/bin/loc_launcher
     class late_start
     group gps inet diag wifi
     writepid /dev/cpuset/system-background/tasks
-
-on property:crypto.driver.load=1
-    insmod /system/lib/modules/qce.ko
-    insmod /system/lib/modules/qcedev.ko
 
 service atfwd /vendor/bin/ATFWD-daemon
     class late_start
@@ -881,36 +837,28 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service ril-daemon /vendor/bin/hw/rild
-    class main
-    user radio
-    group radio cache inet misc audio log readproc wakelock oem_2901 net_raw
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
-
 service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
+    socket rild2 stream 660 root radio
+    socket rild-debug2 stream 660 radio system
     user radio
-    group radio cache inet misc audio log readproc wakelock oem_2901 net_raw
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
     disabled
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
+    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 on property:persist.radio.multisim.config=dsds
     enable ril-daemon2
 
-service ssr_diag /vendor/bin/ssr_diag
-    class late_start
-    user system
-    group system
-    disabled
-
-service charger_monitor /system/bin/charger_monitor
+service time_daemon /vendor/bin/time_daemon
+    class main
     user root
     group root
-    disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
+    group root system radio
     oneshot
 
 service hvdcp_opti /vendor/bin/hvdcp_opti
@@ -924,9 +872,6 @@ service charger /charger
     group system graphics log
     seclabel u:r:charger:s0
     writepid /dev/cpuset/system-background/tasks
-
-on charger
-    start hvdcp_opti
 
 on property:persist.sys.le_fast_chrg_enable=1
     write /sys/class/power_supply/le_ab/le_quick_charge_mode 0

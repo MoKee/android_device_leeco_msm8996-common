@@ -1,19 +1,19 @@
-# ADSP
-lib/libadsprpc.so
-lib64/libadsprpc.so
-vendor/bin/adsprpcd
-vendor/lib/libadsp_default_listener.so
-vendor/lib/libadsp_hvx_callback_skel.so
-vendor/lib/libadsp_hvx_stub.so
-vendor/lib/libadsprpc.so
-vendor/lib/libfastcvadsp_stub.so
-vendor/lib/libfastcvopt.so
-vendor/lib64/libadsp_default_listener.so
-vendor/lib64/libadsprpc.so
-vendor/lib64/libfastcvadsp_stub.so
-vendor/lib64/libfastcvopt.so
+# ADSP - from OnePlus3
+lib/libadsprpc.so|0246c6a5a2d95255857b31f03d22cbe586a5ac54
+lib64/libadsprpc.so|481ed28bc44a85d05327b32461642f67200240b4
+vendor/bin/adsprpcd|a8e947d46be6ad97ed6b41c5aeb80c6c1c8e3654
+vendor/lib/libadsp_default_listener.so|b5bd382d217d887db727b9ae61ce64619306e0ae
+vendor/lib/libadsp_hvx_callback_skel.so|f40b5175070fea40de2e1f95f9a16309e8a4cc07
+vendor/lib/libadsp_hvx_stub.so|54a71d1dc6f0fd86fd60776ce823e48b73e1360f
+vendor/lib/libadsprpc.so|0246c6a5a2d95255857b31f03d22cbe586a5ac54
+vendor/lib/libfastcvadsp_stub.so|d30060f942dbe3ee59054ddff5f1bce0653d7e80
+vendor/lib/libfastcvopt.so|0a584a6326171d580c349a0f001173bfea93e5a6
+vendor/lib64/libadsp_default_listener.so|c88b356ff24c66a640ddaa41798ceddf97a483f1
+vendor/lib64/libadsprpc.so|481ed28bc44a85d05327b32461642f67200240b4
+vendor/lib64/libfastcvadsp_stub.so|247eb7f36c178503b0e8f539d74d1ae1d686329a
+vendor/lib64/libfastcvopt.so|1ed21c3e3eccd423483fe6b99d653142e43f748d
 
-# ADSP modules - from zl1
+# ADSP (modules) - from zl1
 vendor/lib/rfsa/adsp/libadsp_fd_skel.so|5607a78451b621bb6399878ab58ba896c72797ab
 vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so|035272c1d77bcd04e3a838056d512964744c9322
 vendor/lib/rfsa/adsp/libadsp_hvx_skel.so|6a1d6ee55cc65d0f12f6a9bfd04823b46d2d6a24
@@ -22,38 +22,48 @@ vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_BGGR.so|3f82d78a7c9e88c5fdc02dc0761349e4a
 vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_RGGB.so|b21151ad414cd7310117fceb924a72fd20e97257
 vendor/lib/rfsa/adsp/libapps_mem_heap.so|fd362c6b0e30f62cc3fc4566855f46706d2c3c50
 vendor/lib/rfsa/adsp/libdspCV_skel.so|c9f4a3e0f15e5964e3c1a81d0776119ac5d75f07
-vendor/lib/rfsa/adsp/libfastcvadsp_skel.so|6ea74532d714708e3eabcc52506f493f3a3dbe7f
 vendor/lib/rfsa/adsp/libfastcvadsp.so|f3e9a7d633d5892e588facb879244946a5c52acf
-vendor/lib/rfsa/adsp/libvpp_frc.so|d0e36fe8d0bafa4848823fd0186212e58f88084c
-vendor/lib/rfsa/adsp/libvpp_svc_skel.so|c2852313b59cc4b2a002acf6081feaa1f6435154
+vendor/lib/rfsa/adsp/libfastcvadsp_skel.so|6ea74532d714708e3eabcc52506f493f3a3dbe7f
 vendor/lib/rfsa/adsp/libobjectMattingApp_skel.so|ecb82e7046d0dd8ddcaae4cbdac18372ef397877
 vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so|6778d36d87e9e7265a64680c8513b4ca4688c361
 vendor/lib/rfsa/adsp/libscveCleverCapture_skel.so|c9d22f05edf5731b4dc14c78d4f6dabafe9a86c8
 vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so|59341b81f60f86be804314bbe815401d7dc2c9dd
 vendor/lib/rfsa/adsp/libscveT2T_skel.so|1824c3bf56ebe8e2414c7c3f5d84227ea3dee691
 vendor/lib/rfsa/adsp/libscveTextReco_skel.so|e4a961413b463460c5571d847be1752a55a50600
+vendor/lib/rfsa/adsp/libvpp_frc.so|d0e36fe8d0bafa4848823fd0186212e58f88084c
+vendor/lib/rfsa/adsp/libvpp_svc_skel.so|c2852313b59cc4b2a002acf6081feaa1f6435154
 vendor/lib/rfsa/adsp/us-syncproximity.so|136ec0bae527f7fc81a18f8bf42526219b1bd480
 
-# Audio
+# Audio - Gemini 8.0.0/OPR1.170623.032/8.9.13
+etc/permissions/audiosphere.xml
+framework/audiosphere.jar
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libadm.so
 vendor/lib/libaudcal.so
-vendor/lib/libaudiodevarb.so
+vendor/lib/libaudioalsa.so
+vendor/lib/libmdsprpc.so
+vendor/lib/libqtigef.so
+vendor/lib/soundfx/libasphere.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
+vendor/lib/soundfx/libshoebox.so
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbmapper.so
 vendor/lib64/libacdbrtac.so
 vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
-vendor/lib64/libaudiodevarb.so
+vendor/lib64/libaudioalsa.so
+vendor/lib64/libmdsprpc.so
+vendor/lib64/libqtigef.so
+vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
+vendor/lib64/soundfx/libshoebox.so
 
 # Audio (acdbloader) - from zl1
 vendor/lib/libacdbloader.so|034a5cf03cccfb22e415832c7d6a043dc52d98c0
@@ -68,9 +78,159 @@ vendor/lib/libbtnv.so
 vendor/lib64/libaptX_encoder.so
 vendor/lib64/libaptXHD_encoder.so
 
-# Camera
-vendor/lib/libstlport.so
-vendor/lib64/libstlport.so
+# Camera - from zl1 - 6.0.1/WAXCNFN5902012312S/letv01060151
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon|c36fe0c5f93cdfbc3abf83ca0e73880bd218c079
+etc/camera/ov8865_chromatix.xml:vendor/etc/camera/ov8865_chromatix.xml|4f52dfce8729b78c494f3e80721d4ff63831ffcf
+etc/camera/ov8865_ofilm_chromatix.xml:vendor/etc/camera/ov8865_ofilm_chromatix.xml|bda41d8d499e6df7f029fd75c5456cd7786f51c1
+lib/libLetvCameraImageSDK.so:vendor/lib/libLetvCameraImageSDK.so|df370f3bb9a61727c15f35a3f406b7bae0cb33d3
+lib/libamipengine.so:vendor/lib/libamipengine.so|74aa821aa923d3ad4d618b15bf1b9538771760a2
+lib/libarcsoft_antishaking.so:vendor/lib/libarcsoft_antishaking.so|15c2389297cb9e02ebe6bd8430f135db32020160
+lib/libarcsoft_beautyshot.so:vendor/lib/libarcsoft_beautyshot.so|06361821b4083fdf9de413cae9ab0a3bb5356378
+lib/libarcsoft_beautyshot_image_algorithm.so:vendor/lib/libarcsoft_beautyshot_image_algorithm.so|ff5f29a3d86e5d1d02ef9aea8aff0c1b94a77239
+lib/libarcsoft_beautyshot_video_algorithm.so:vendor/lib/libarcsoft_beautyshot_video_algorithm.so|386a8eab71964d5cc073715377cb085c86ac2708
+lib/libarcsoft_hdr.so:vendor/lib/libarcsoft_hdr.so|c02d407a4367ead9b1e887786550adbce22ca44c
+lib/libarcsoft_hdr_detection.so:vendor/lib/libarcsoft_hdr_detection.so|a94a7915ba1145af0850053327c1c3040a86fc23
+lib/libarcsoft_night_shot.so:vendor/lib/libarcsoft_night_shot.so|26a898ab06937d3d4ec0b6551c7c28811a487c6d
+lib/libarcsoft_nighthawk.so:vendor/lib/libarcsoft_nighthawk.so|5f9cd94087936583da924af94860ef4d4dfc41a4
+lib/libarcsoft_panorama_burstcapture.so:vendor/lib/libarcsoft_panorama_burstcapture.so|33e6f9a45b47307f6c37a888e6f00673d60e40f3
+lib/libarcsoft_smart_denoise.so:vendor/lib/libarcsoft_smart_denoise.so|1313342d9cdf57b58c6585f45348cc898a4f9caa
+lib/libcamera_letv_algo.so:vendor/lib/libcamera_letv_algo.so|36094639ed425aa622418b76bf56996ffb56ef8e
+lib/libletv_algo_jni.so:vendor/lib/libletv_algo_jni.so|a2b8336dc9e7c4dd49631257e5035b0cab231ff2
+lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so|deb158c1f08234912526c3eaa1b9db9806e1c4b7
+lib/libmpbase.so:vendor/lib/libmpbase.so|bdfbb1fb3a86e87a5db674f35c52e612ecc9f8c8
+lib/libmpkernel.so:vendor/lib/libmpkernel.so|4a7ca7a6b169ddd0c7f81fe4153852616da55013
+lib/libmpstream.so:vendor/lib/libmpstream.so|8624e671cd4dcefe6f92ba769865284066490ee5
+lib/libmputility.so:vendor/lib/libmputility.so|e1a55cdbc6753ab3718da297808ca635300240e8
+lib/libqrDec.so:vendor/lib/libqrDec.so|bf012d6eb2afc9ff3460eb1747a07ca9fe12325f
+lib/libzeusisCameraAlgoSceneDetection.so:vendor/lib/libzeusisCameraAlgoSceneDetection.so|0bcc0d99a8bc8b5d28f6551d9c91dd7b7647c6f1
+vendor/lib/libjpegdhw.so|1e1d87cf6b85978482000c1bc4f07d2f18a83a21
+vendor/lib/libjpegdmahw.so|9e31748ccf64aab1862c77dd41d28d64eb860738
+vendor/lib/libjpegehw.so|86fd4c529a431f207b1a1dd0de8bddb80a6373a0
+vendor/lib/libmmcamera2_c2d_module.so|1c5113b2fcdb741a67656e731f58ab74c1a40af0
+vendor/lib/libmmcamera2_cpp_module.so|def3f963888645c6e402850145c4d940f218390d
+vendor/lib/libmmcamera2_frame_algorithm.so|db4b1954b0c14e8da95c4f5ae38cc195b68a0e2f
+vendor/lib/libmmcamera2_iface_modules.so|feadcca03b73e97f90b45cf8f920ba4674118ed6
+vendor/lib/libmmcamera2_imglib_modules.so|a9af4199f8570a5cf7e503a0ce30f755ac34758c
+vendor/lib/libmmcamera2_isp_modules.so|a4918f70d8ec9f61d23e551d872cde7d066f2de4
+vendor/lib/libmmcamera2_is.so|939093d1b25343cefa423c72562d5ea9c5b6b53f
+vendor/lib/libmmcamera2_mct.so|c12ce6dfd95ce763fb34e9d08a8f077bb1c62459
+vendor/lib/libmmcamera2_memleak.so|0f285aa8a30f25f1c3690f061272511a0164487c
+vendor/lib/libmmcamera2_pp_buf_mgr.so|ffb6556d7f5062201b600b000608c22a3744d729
+vendor/lib/libmmcamera2_pproc_modules.so|1d96aba62349295bd767ef8f86990eb4c9f7cc35
+vendor/lib/libmmcamera2_q3a_core.so|92380218f4642986f6b60428743d4d181fc9c6f6
+vendor/lib/libmmcamera2_sensor_modules.so|3ee7fefbdae85cf38a43afaa3f1e47466207f98a
+vendor/lib/libmmcamera2_stats_algorithm.so|735e2f707763d8a8f6b8e58eae596bd93df23354
+vendor/lib/libmmcamera2_stats_modules.so|1af81d8e13a2ec00e0e011bdece48c54bbd79843
+vendor/lib/libmmcamera_dbg.so|8769d090a61fb2d5ce06d51ff4a9c9ee89be6318
+vendor/lib/libmmcamera_dummyalgo.so|2da4909eb5e766ee79f5a8724958f55b855e2d43
+vendor/lib/libmmcamera_eebinparse.so|1bddad5cfbeddb130811509fecafe93cebfb1d15
+vendor/lib/libmmcamera_eeprom_util.so|f4278656e56a7efb5fc00df72941a635b49dae95
+vendor/lib/libmmcamera_eztune_module.so|30e30a65c8d4da8eec44009ff4627e388b217a8f
+vendor/lib/libmmcamera_facedetection_lib.so|2149513321238d680d5d2fe5a0d1e98d5e62e8db
+vendor/lib/libmmcamera_faceproc.so|2b580dc5464b390586246ad3cc23efdf903a2833
+vendor/lib/libmmcamera_faceproc2.so|27f802a68cc8aab70ba0637fd60e5d5c52f606a0
+vendor/lib/libmmcamera_hvx_add_constant.so|33723544256af288ff2d6adc2838223ed4165591
+vendor/lib/libmmcamera_hvx_grid_sum.so|01525c8636802a3a693da5e81abae26a535f73e1
+vendor/lib/libmmcamera_hvx_zzHDR.so|9d0becaa82611b940e905b61e8e5fc187ba49d4c
+vendor/lib/libmmcamera_imglib_faceproc_adspstub.so|fe58455d7c91f24c47bd28c6e5fc5cd60c34dc56
+vendor/lib/libmmcamera_imglib.so|74049f6131aca8e0f2f72d50d0d31e9870cbc960
+vendor/lib/libmmcamera_ov8865.so|ddbba5e8c23b3fa9be5c9c32a853dc4bee641488
+vendor/lib/libmmcamera_ov8865_eeprom.so|3181369e85a910261a0187334d566ccf7a46fadb
+vendor/lib/libmmcamera_ov8865_ofilm.so|f85119f80240efe91611cf5603bfdf7c28dd0694
+vendor/lib/libmmcamera_paaf_lib.so|83f2a89000cd7c452c71c4a820bb6b2c9c26873b
+vendor/lib/libmmcamera_pdaf.so|860daf19dcb3930cf8a29034aa9e0931aa38219e
+vendor/lib/libmmcamera_pdafcamif.so|bb841ac8fb685cbf2f432cd80f9703bcc57e7d13
+vendor/lib/libmmcamera_ppbase_module.so|57cbbe13f800d6432214897175ce216428eb91b9
+vendor/lib/libmmcamera_ppeiscore.so|3f9492d0b6ba590c30addb74914a6676355a25cd
+vendor/lib/libmmcamera_thread_services.so|3108f2677f17c8caafb45a08330299b6a8eb921b
+vendor/lib/libmmcamera_tintless_algo.so|b8f9813e50f51ab664ea27b194e998a4e43fec18
+vendor/lib/libmmcamera_tintless_bg_pca_algo.so|be10a554dd8eebb541df30aac919b735284ebfda
+vendor/lib/libmmcamera_tuning_lookup.so|24f0477cf3fbbd668ad475623740f61cd8f46ca3
+vendor/lib/libmmcamera_tuning.so|4142bc44b7a70fd724208b5b29c30ca39933a047
+vendor/lib/libmmjpeg.so|9a502519441fd45a2cafc4c6b3603eb393ed6ccb
+vendor/lib/libmmqjpeg_codec.so|e39ced5da1a865eae4f93d8cfec6f88040bfe445
+vendor/lib/libmmqjpegdma.so|5abddee60bde3cdd6fbac3287e18632a143f2106
+vendor/lib/libqomx_jpegdec.so|ce234ef418103a2756fce4cc51cfbf02c0c527f5
+vendor/lib/libqomx_jpegenc_pipe.so|5c0dda9b0f7990c8a307b61ddfb0d2e322fc1c74
+vendor/lib/libqomx_jpegenc.so|56e2727b8412c7add3237336b5022602dfd0aaef
+
+# Camera chromatix - ov8865 - from zl1 - 6.0.1/WAXCNFN5902012312S/letv01060151
+vendor/lib/libchromatix_ov8865_common.so|897c5023bc47e440cf3f18da067c185a69dad9a4
+vendor/lib/libchromatix_ov8865_cpp_ds_chromatix.so|32cb89c817c8452539d1ddefed4753991f740e3c
+vendor/lib/libchromatix_ov8865_cpp_hfr_120.so|cb21107190764c4d179619ab1c8057bc47c98a00
+vendor/lib/libchromatix_ov8865_cpp_hfr_60.so|daadd52e23327dd1840a89000b72309406182980
+vendor/lib/libchromatix_ov8865_cpp_hfr_90.so|9b0a255e935c0c4b21f7b8919fc9410db40dd0f5
+vendor/lib/libchromatix_ov8865_cpp_liveshot.so|76933d95ed63cfccecb08dd0b6cf7d3b1b17bf10
+vendor/lib/libchromatix_ov8865_cpp_preview.so|27b01d6504652626d210797144f50652bc4e032b
+vendor/lib/libchromatix_ov8865_cpp_snapshot.so|4241e516a10a096a49b9380fb5e8492eb602459a
+vendor/lib/libchromatix_ov8865_cpp_us_chromatix.so|64520a0d1b038fc9d0f9ce90bcd8b604a1fe5ac7
+vendor/lib/libchromatix_ov8865_cpp_video.so|d387701b2204ae833bed96ed32dd81066898a8e8
+vendor/lib/libchromatix_ov8865_cpp_video_full.so|4c6b4250a93e4211270546b85678d681fe0307a6
+vendor/lib/libchromatix_ov8865_default_preview_dw9714.so|23a31e243174259680c8a9faedddf033ae58d63a
+vendor/lib/libchromatix_ov8865_default_video_dw9714.so|913afd7541883d43cb4594cf83c311c88be1c47d
+vendor/lib/libchromatix_ov8865_default_video.so|aa37314958c0ba0196c6eaed40aba032bd2c247d
+vendor/lib/libchromatix_ov8865_hfr_120_dw9714.so|3dc7eff2771f8a7770ba74c3e829f1a523e2f06d
+vendor/lib/libchromatix_ov8865_hfr_120.so|5de104b31f1ef4e73e17f49771a914faac75690d
+vendor/lib/libchromatix_ov8865_hfr_60_dw9714.so|ec242eb8dae8b2fc690a1d6ac877cdcb8f4ff0aa
+vendor/lib/libchromatix_ov8865_hfr_60.so|6f37458fc6c75dc834e5bcaaffb51d41aafed1c9
+vendor/lib/libchromatix_ov8865_hfr_90_dw9714.so|67dcbae040f7309840ff84836ea182d9b757fda1
+vendor/lib/libchromatix_ov8865_hfr_90.so|14d72797dffc1701e27464cdb00ccb66a6baa59f
+vendor/lib/libchromatix_ov8865_postproc.so|6b09365e979ff3c5d3c06bd7f911dc5f230ece72
+vendor/lib/libchromatix_ov8865_preview.so|008bc0edb5872551a55c0044b493cbe475e59aea
+vendor/lib/libchromatix_ov8865_snapshot.so|ed2511467dd0e397a6b4bbeb537ca55a311870ec
+vendor/lib/libchromatix_ov8865_video_full.so|8bd8f1625a8f21629c35374469a8a914ae97ee63
+vendor/lib/libchromatix_ov8865_zsl_preview.so|28d6f3ff73b07afb8a462d0726b93d53dd5b4ee5
+vendor/lib/libchromatix_ov8865_zsl_video.so|7c74288934a548af75b1fbf397da72a413ff4e70
+
+# Camera firmware - from zl1 - 6.0.1/WAXCNFN5902012312S/letv01060151
+vendor/firmware/cpp_firmware_v1_10_0.fw|cf9458601aa4bbe9c57acfc1c7d0f158386ace9f
+
+# Camera (libstlport) - from CAF
+vendor/lib/libstlport.so|8971701a4dd5d7928d5f44245dd0c08435540ad8
+vendor/lib64/libstlport.so|6ed59e168ff6cf43fcc1a911d2b06821691b5aca
+
+# Camera sensors - from zl1 - 6.0.1/WAXCNFN5902012312S/letv01060151
+vendor/lib/libmmcamera_isp_abf47.so|d591509428e8389bd56ae5b99d3d91e3bdb713f4
+vendor/lib/libmmcamera_isp_aec_bg_stats47.so|ebee5f2f39c63c4a98a6fbde3c1dc135e04c7e98
+vendor/lib/libmmcamera_isp_bf_stats47.so|fffdec596ad86cceceed3a791737c7b9b89cee75
+vendor/lib/libmmcamera_isp_bg_stats46.so|364a4c2f4c00a7020ba10e399ecddcfaceb091e3
+vendor/lib/libmmcamera_isp_bhist_stats44.so|bf33277085cad7e11bd99b894b2e3b82d6deac6e
+vendor/lib/libmmcamera_isp_black_level47.so|a2534c88a79b50d58f04ce1e4f8af6d51fda8c00
+vendor/lib/libmmcamera_isp_bpc47.so|b0bd02a26b60781186018ba9bbe13f726a5dc81d
+vendor/lib/libmmcamera_isp_cac47.so|c560dda438984a50fdc139c368a433a9761d08ec
+vendor/lib/libmmcamera_isp_chroma_enhan40.so|22b5e49ee3bf60b15c84c59aa67457377b24cf98
+vendor/lib/libmmcamera_isp_chroma_suppress40.so|145ce2668d70d215d8fc47dc7ef3efee20fd209c
+vendor/lib/libmmcamera_isp_clamp_encoder40.so|02ebc0b636d282fdb36eedf6d6d8eaeb502b8c3a
+vendor/lib/libmmcamera_isp_clamp_video40.so|6ce2e913bc8aa8e2ac6f129b1059f0694452649c
+vendor/lib/libmmcamera_isp_clamp_viewfinder40.so|3c71dfe02f6a48cddb2d2e72062cb36e27014100
+vendor/lib/libmmcamera_isp_color_correct46.so|792ecfe63bff6358903e6c3f5f155f4cf5f2e9e7
+vendor/lib/libmmcamera_isp_color_xform_encoder46.so|b2c1be82e807bcb6119140bc65dd99a2cca04caa
+vendor/lib/libmmcamera_isp_color_xform_video46.so|bcde96223e667f5afbf01eb10190496e139d1f16
+vendor/lib/libmmcamera_isp_color_xform_viewfinder46.so|a5a421e90f286e7c479002fa9178a9afebaf7206
+vendor/lib/libmmcamera_isp_cs_stats46.so|c05cc8213dac088c8f882f15ed3a007b1a122b6a
+vendor/lib/libmmcamera_isp_demosaic47.so|138a6fafb8a3465b37e28b03e2700786203ed64d
+vendor/lib/libmmcamera_isp_demux40.so|de9c8fb0d4f45b1be9fdaed33efa0ed40cd087fc
+vendor/lib/libmmcamera_isp_fovcrop_encoder46.so|878e9f9e9e57f2aebf3c2e5ef2230b27ed596137
+vendor/lib/libmmcamera_isp_fovcrop_video46.so|e8f0bf317d4d54f5f4c4476b386cd0ebf7fc730d
+vendor/lib/libmmcamera_isp_fovcrop_viewfinder46.so|ab5124d2e0947abb2ae2bd56bdf055b2d845dbcc
+vendor/lib/libmmcamera_isp_gamma44.so|5375e96fb565ab3f12e57fa00150fe007a6f9584
+vendor/lib/libmmcamera_isp_gic46.so|65e29c7598a68acf32095577a9892d94e5efc1bc
+vendor/lib/libmmcamera_isp_gtm46.so|486be7eec5f1b4e0711226a5c5beb203eca1995b
+vendor/lib/libmmcamera_isp_hdr46.so|2bb77baf222465b51894b88066f8639b4624e274
+vendor/lib/libmmcamera_isp_hdr_be_stats46.so|d77d6a9dd30489c2a9a34ab4ac3d5c251f759a30
+vendor/lib/libmmcamera_isp_ihist_stats46.so|42ec943b8950834862619ecbbccc328cda7d9806
+vendor/lib/libmmcamera_isp_linearization40.so|dc96ea9de749d9cdde26ad8de29ce8b0f448631e
+vendor/lib/libmmcamera_isp_ltm47.so|967b9a217ebd622dae4acf69c933c7f7c892d14a
+vendor/lib/libmmcamera_isp_mce40.so|7f983b621978773427c7dfee614c6533dcc5a414
+vendor/lib/libmmcamera_isp_mesh_rolloff44.so|05f474e78aa871b3429e1628d221b3638bc648f4
+vendor/lib/libmmcamera_isp_pedestal_correct46.so|004f1b6e0cfd881bbb1d3080c73b7ea01b3e90f1
+vendor/lib/libmmcamera_isp_rs_stats46.so|d68f744b0724d028e723832463e4aecfd0182085
+vendor/lib/libmmcamera_isp_scaler_encoder46.so|7bbfc0f76f9c06f55b81eae1529e4df399e1ed9d
+vendor/lib/libmmcamera_isp_scaler_video46.so|df7d74dfcfc3e1ee83045218f2be3dda0cc3aeed
+vendor/lib/libmmcamera_isp_scaler_viewfinder46.so|9e88ac161e20015c1cd093a0a07a84678a7be75e
+vendor/lib/libmmcamera_isp_sce40.so|c56210d76256807abb7cb31f9dc923adb78392fd
+vendor/lib/libmmcamera_isp_snr47.so|44f15661d64906cb1e87de1e028f87f0f022c928
+vendor/lib/libmmcamera_isp_sub_module.so|5fb215ead8c3eefb1c2a0f3c6730dd9d3a55365c
 
 # CNE - gemini - 8.0.0/OPR1.170623.032/8.9.13
 etc/cne/SwimConfig.xml
@@ -159,70 +319,21 @@ vendor/lib/libdpmqmihal.so
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0_vendor.so
 vendor/lib64/libdpmqmihal.so
 
-# DRM - from OnePlus 5/t - 8.1.0/OPM1.171019.011/1808081927
-lib64/libGPTEE_system.so|69197769104a433a895cc6c742ec46d7bd4d6dbb
-lib/libGPTEE_system.so|4d5c7999a511729715a3b4e8a3c205b21dbb7ef1
-vendor/bin/qseecomd|760e9f3bd6d425cc9fc709745ddf3eb46a4ee6a3
-vendor/lib64/libGPTEE_vendor.so|bd57e244bb19edfb3dc2d858cc91008fbd48523a
-vendor/lib64/libGPreqcancel.so|9d128be83f279c4432e037886bba4a0b9040dd35
-vendor/lib64/libGPreqcancel_svc.so|b1f2ae2f0d0f3de4a7d3f992651a1212ee0c993c
-vendor/lib64/libQSEEComAPI.so|14ad39cf135fa2c64e67c155bd525931c527d232
-vendor/lib64/libSecureUILib.so|09066ec50a920606ae0e3307d4317d9f0762a280
-vendor/lib64/libStDrvInt.so|8b47ca63db3ae80a416451c14a03b68aef4ba4c6
-vendor/lib64/libdrmfs.so|acd6e59c6b5752d36b8b68a48d5127322f71cac9
-vendor/lib64/libdrmtime.so|9e7ccd3999c5c5407aeb7f92f4e5610e6da70817
-vendor/lib64/libqisl.so|4d99dd6d49b85aebc7d55b18f8783b3196973114
-vendor/lib64/librpmb.so|794e42357f161a917dcbc56e8acb1589fdc42706
-vendor/lib64/libsecureui.so|4c2fab3bac0596b925cac1ba4b693a73182beee5
-vendor/lib64/libsecureui_svcsock.so|861a0aa2eaa6e233084c4d691d0e0f790f892ae3
-vendor/lib64/libspl.so|bcc4eb3930bbeceb4598299f2ae6d0573ce8a75d
-vendor/lib64/libssd.so|f8b7d3b9c14052f6071821b4eabacede0b6d6ff6
-vendor/lib64/libtzdrmgenprov.so|513e5bf452dcc841216bb34501ffcabfce15e748
-vendor/lib/libGPTEE_vendor.so|e38bf1170e82911882469e30c0ad007b8b598ba2
-vendor/lib/libGPreqcancel.so|725a7e1e69a9f6f7ef2ad935679e4f2c52398eef
-vendor/lib/libGPreqcancel_svc.so|beb6babb5149f99bd9a114aa904f18c938a2b774
-vendor/lib/libQSEEComAPI.so|4dd079a981cf3b8d121ce27edce6757c4d6dff73
-vendor/lib/libSecureUILib.so|eb93ba55bbf84e06d420d8b6d6a34b03171541c2
-vendor/lib/libStDrvInt.so|5645d99300c12946d4bd98c5e184e4bcfa5a57aa
-vendor/lib/libdrmfs.so|4406068f037ab920754e690832a1ff6d70fcf5d6
-vendor/lib/libdrmtime.so|09f3388ec4a881da398567ba2e9a4510c3caa963
-vendor/lib/libqisl.so|e5f235683a6c6c660f674b4884802c757395a33f
-vendor/lib/librpmb.so|845d7d0cc5a2de00717da84a423dceb49c8161c9
-vendor/lib/libsecureui.so|9b2600b91f37c8836e2f709d14924aab7f2d6740
-vendor/lib/libsecureui_svcsock.so|8ac378c8532af382052ff4319da03909ce9993ec
-vendor/lib/libspl.so|501c6349fb217500a2735bbe548b00614e767cbb
-vendor/lib/libssd.so|2dcbbc51b0eb809de10944a8cd18bbbcda89746f
-vendor/lib/libtzdrmgenprov.so|9dce561baad589bffd038b7cb5e0e9f7598e0bfd
+# DRM and SEE - from oneplus3 - 8.0.0/OPR1.170623.032/1812060016
+vendor/bin/qseecomd|afd6f74e091e0ba21a4f84b4a69b5db8c755afb0
+vendor/lib64/libGPreqcancel.so|1f00e7a539f5851a2a8fb55a5cedd806a12472aa
+vendor/lib64/libGPreqcancel_svc.so|7e36ee7225ff30e74fa00132ba8e5dfc9dc8bb2b
+vendor/lib64/libQSEEComAPI.so|4c7e40896d8b92cac02f457dce605b7eeff139e6
+vendor/lib64/libdrmfs.so|caaa4442b3bd3b2be345d3cddf86b0b4d6e7cbe5
+vendor/lib64/libdrmtime.so|0d8c67f8bd42906d9dde3131b690051cfc33e29c
+vendor/lib64/libqisl.so|83eb6617d7f0a11593df45adb9d09e485abe14b6
+vendor/lib64/librpmb.so|1be8d44919ad1d457b73fdc987335f4ec2620842
+vendor/lib64/libssd.so|2a07064578f0b8dde52d755b44227f354af15c77
+vendor/lib/libQSEEComAPI.so|7062cdfb83a986d44190d6fd9762da43d508e10a
 
-# DRM - HDCP - from OnePlus 5/t - 8.1.0/OPM1.171019.011/1808081927
-vendor/bin/hdcp1prov|5bbd6c197f59de422f8113dc722eaaca234b217a
-vendor/bin/hdcp2p2prov|83ccc321e4bfd9052d81e9585505c621a729a19d
-vendor/lib64/libhdcp1prov.so|703163257c8291d8b3aac0c58a7234c96c57974e
-vendor/lib64/libhdcp2p2prov.so|0bd4d1f1caf79c887ef26bb63ffde6a9980fec58
-vendor/lib64/libwfdhdcpcp.so|bbdf1d451943ce67e55efc00beaa6a24adca576c
-vendor/lib64/libwfdmodulehdcpsession.so|b8d269ff426b0b8a0b5d1dd69c50d7f13747cec6
-vendor/lib/libhdcp1prov.so|bb140968b9a5474de2aff141bd6de9f2df0495fb
-vendor/lib/libhdcp2p2prov.so|382d1ebbd0ec0189aa7bf9bc39400e663bcc112a
-vendor/lib/libwfdhdcpcp.so|a3ecd01c3ca8519925e1656c411564e429804513
-vendor/lib/libwfdmodulehdcpsession.so|a675134223409580691d5df564470af655d1c9c4
-
-# DRM - Qualcomm Trusted Execution Enviornment - from OnePlus 5/t - 8.1.0/OPM1.171019.011/1808081927
-lib64/libQTEEConnector_system.so|6bc4fc401e54f30fe011df631a3b007f4d881895
-lib64/vendor.qti.hardware.qteeconnector@1.0.so|18222493f77a2ad8c7d83007523b339bcab7fd1f
-lib/libQTEEConnector_system.so|f38794b679b3f2c1ff5335d80a90379063ab8798
-lib/vendor.qti.hardware.qteeconnector@1.0.so|7827e36dfd1d688e02dece67ad6f415ed222af18
-vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service|6f4420700d10fe6a5075ef90ae08b867dc1a5c89
-vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc|c966350ee67d3a7c73ca7184e3725264025d16f5
-vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|31b8be194c5d2aace067cdd6b22687dbc1f5f46a
-vendor/lib64/libQTEEConnector_vendor.so|eb34d8e292a13e1b242f318de66846ce794f0b2d
-vendor/lib64/vendor.qti.hardware.qteeconnector@1.0_vendor.so|5780dcb6b3ff3096b9310225213769892a9e3e55
-vendor/lib/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|6b892756e745b73d3f68ec660a3a0ba517689b42
-vendor/lib/libQTEEConnector_vendor.so|be869ca55f30fb7004fcd0952177e2968922f219
-vendor/lib/vendor.qti.hardware.qteeconnector@1.0_vendor.so|60aa6167356fe945e548c2c8153865e51508dfde
-
-# Gatekeeper
-vendor/lib/hw/gatekeeper.msm8996.so
-vendor/lib64/hw/gatekeeper.msm8996.so
+# Gatekeeper - from oneplus3 - 8.0.0/OPR1.170623.032/1812060016
+vendor/lib64/hw/gatekeeper.msm8996.so|3c5dacdbbba914a048ce69d7f6693a9c8505990b
+vendor/lib/hw/gatekeeper.msm8996.so|3ac31ca2b07444125c8f11de5460125b29fa86f1
 
 # GPS - gemini - 8.0.0/OPR1.170623.032/8.9.13
 etc/permissions/com.qti.location.sdk.xml
@@ -341,6 +452,16 @@ vendor/lib/libtinyxml2_1.so|3ee768813f5b351b71bd7dd2367b13a3698a591a
 vendor/lib/hw/vulkan.msm8996.so
 vendor/lib64/hw/vulkan.msm8996.so
 
+# Graphics firmware
+vendor/firmware/a530_gpmu.fw2
+vendor/firmware/a530_pfp.fw
+vendor/firmware/a530_pm4.fw
+vendor/firmware/a530v1_pfp.fw
+vendor/firmware/a530v1_pm4.fw
+vendor/firmware/a530v2_seq.fw2
+vendor/firmware/a530v3_gpmu.fw2
+vendor/firmware/a530v3_seq.fw2
+
 # IMS - gemini - 8.0.0/OPR1.170623.032/8.9.13
 -app/ims/ims.apk
 -app/uceShimService/uceShimService.apk
@@ -377,9 +498,9 @@ vendor/lib64/lib-uceservice.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0-service-Impl.so
 vendor/lib64/vendor.qti.imsrtpservice@1.0_vendor.so
 
-# Keystore
-vendor/lib/hw/keystore.msm8996.so
-vendor/lib64/hw/keystore.msm8996.so
+# Keystore - from oneplus3 - 8.0.0/OPR1.170623.032/1812060016
+vendor/lib64/hw/keystore.msm8996.so|66a7203806db48f1087bfa29b2a2017727d633b0
+vendor/lib/hw/keystore.msm8996.so|012e1f5bcf93b5f254a6f0b6f0dc2656ee19f804
 
 # Listen
 vendor/lib/hw/sound_trigger.primary.msm8996.so
@@ -428,6 +549,46 @@ vendor/bin/pm-proxy
 vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
+
+# Perf - Gemini 8.0.0/OPR1.170623.032/8.9.13
+lib64/vendor.qti.hardware.iop@1.0.so
+lib64/vendor.qti.hardware.perf@1.0.so
+lib/vendor.qti.hardware.iop@1.0.so
+lib/vendor.qti.hardware.perf@1.0.so
+vendor/bin/energy-awareness
+vendor/bin/hw/vendor.qti.hardware.iop@1.0-service
+vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
+vendor/etc/init/vendor.qti.hardware.iop@1.0-service.rc
+vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
+vendor/etc/perf/gamedwhitelist.xml
+vendor/etc/perf/perfboostsconfig.xml
+vendor/etc/perf/perf-profile0.conf
+vendor/etc/perf/perf-profile1.conf
+vendor/etc/perf/perf-profile2.conf
+vendor/etc/perf/perf-profile3.conf
+vendor/etc/perf/perf-profile4.conf
+vendor/etc/perf/perf-profile5.conf
+vendor/etc/perf/perf-profile6.conf
+vendor/lib64/hw/vendor.qti.hardware.iop@1.0-impl.so
+vendor/lib64/libfeedbackhandler.so
+vendor/lib64/libperfgluelayer.so
+vendor/lib64/libqti-iopd.so
+vendor/lib64/libqti-iopd-client.so
+vendor/lib64/libqti-perfd.so
+vendor/lib64/libqti-perfd-client.so
+vendor/lib64/libqti-util.so
+vendor/lib64/vendor.qti.hardware.iop@1.0_vendor.so
+vendor/lib64/vendor.qti.hardware.perf@1.0_vendor.so
+vendor/lib/hw/vendor.qti.hardware.iop@1.0-impl.so
+vendor/lib/libfeedbackhandler.so
+vendor/lib/libperfgluelayer.so
+vendor/lib/libqti-iopd.so
+vendor/lib/libqti-iopd-client.so
+vendor/lib/libqti-perfd.so
+vendor/lib/libqti-perfd-client.so
+vendor/lib/libqti-util.so
+vendor/lib/vendor.qti.hardware.iop@1.0_vendor.so
+vendor/lib/vendor.qti.hardware.perf@1.0_vendor.so
 
 # Postprocessing - from bardock-pro - 8.1.0/OPM1.171019.026/717
 etc/permissions/com.qti.snapdragon.sdk.display.xml|0bff16d681e75f203c1e11ff33afba82490e49b3
@@ -491,8 +652,8 @@ vendor/lib/libqmi.so
 vendor/lib/libqmiservices.so
 vendor/lib/libsmemlog.so
 
-# QuickCharge
-vendor/bin/hvdcp_opti
+# QuickCharge - from zl1
+vendor/bin/hvdcp_opti|316e3b0643981b502f58f2f48e4058b06a98706d
 
 # RIL - gemini - 8.0.0/OPR1.170623.032/8.9.13
 -app/QtiTelephonyService/QtiTelephonyService.apk
@@ -532,6 +693,18 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0_vendor.so
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/lib/libmdmdetect.so
 vendor/radio/qcril_database/qcril.db
+
+# RIL (MBN) - from zl1 - 6.0.1/WAXCNFN5902012312S/letv01060151
+vendor/firmware/modem_pr/mbn_upgrade_info|46124ca9f9d67aa08607ec0a630e6682fa550b40
+vendor/firmware/modem_pr/mcfg_sw_att.mbn|87abc6c914452a0bfe84d2b80f610250c76de279
+vendor/firmware/modem_pr/mcfg_sw_cmcc.mbn|e3625f7b98b311bdc6bdf9cafe4625c4d613c6fb
+vendor/firmware/modem_pr/mcfg_sw_ct.mbn|c753ff2faefc46c509fdee80370c72d6ca4b76ca
+vendor/firmware/modem_pr/mcfg_sw_cu.mbn|1a3dc6987e3c2018719314d40975dbac1ec2ba07
+vendor/firmware/modem_pr/mcfg_sw_others.mbn|875e111202a30d3ebf1d9251591c41589f9aa8d3
+vendor/firmware/modem_pr/mcfg_sw_reliance.mbn|23288175fa5195d44befbff6f4c5b0cb71969bd3
+vendor/firmware/modem_pr/mcfg_sw_sprint.mbn|587d37c5ec182e9c7c3e436bde733ddb615c04d1
+vendor/firmware/modem_pr/mcfg_sw_tmo.mbn|39790692fa8fc5699fe6f9acf54ae8d82ddf78a6
+vendor/firmware/modem_pr/mcfg_sw_verizon.mbn|907d87fa7a4289c2fa1d6298d837f0a331c65419
 
 # Sensors
 vendor/bin/sensors.qcom
