@@ -55,6 +55,8 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
 on fs
     mount_all /vendor/etc/fstab.qcom
 
@@ -274,6 +276,8 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
     chown root audio /sys/kernel/boot_adsp/boot
+
+    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
 on boot
     # Secure touch
@@ -735,6 +739,12 @@ service time_daemon /vendor/bin/time_daemon
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
+
+service vendor.power_off_alarm /vendor/bin/power_off_alarm
+    class core
+    group system
+    disabled
+    oneshot
 
 service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
