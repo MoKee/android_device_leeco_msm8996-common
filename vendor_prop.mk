@@ -46,9 +46,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bt.max.hfpclient.connections=1 \
-    qcom.bluetooth.soc=rome \
     ro.bluetooth.wipower=true \
-    ro.bluetooth.emb_wp_mode=true
+    ro.bluetooth.emb_wp_mode=true \
+    vendor.qcom.bluetooth.soc=rome
 
 # Property for vendor specific library
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -165,18 +165,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.mt_sms_ack=20 \
     persist.vendor.radio.sib16_support=1 \
     telephony.lteOnCdmaDevice=1
-
-# RmNet Data
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.rmnet.data.enable=true \
-    persist.data.wda.enable=true \
-    persist.data.df.dl_mode=5 \
-    persist.data.df.ul_mode=5 \
-    persist.data.df.agg.dl_pkt=10 \
-    persist.data.df.agg.dl_size=4096 \
-    persist.data.df.mux_count=8 \
-    persist.data.df.iwlan_mux=9 \
-    persist.data.df.dev_name=rmnet_usb0
 
 # System props for the MM modules
 PRODUCT_PROPERTY_OVERRIDES += \
