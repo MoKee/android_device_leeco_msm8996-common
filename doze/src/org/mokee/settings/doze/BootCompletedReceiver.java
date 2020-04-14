@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2015 The CyanogenMod Project
+ *               2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +15,24 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package org.mokee.settings.doze;
 
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.util.Log;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
     private static final boolean DEBUG = false;
-    private static final String TAG = "SettingsDevice";
+    private static final String TAG = "Doze";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        if (DEBUG) Log.d(TAG, "Boot Receiver");
-        SettingsUtils.writeCameraFocusFixSysfs(
-            SettingsUtils.getCameraFocusFixEnabled(context));
+        if (Utils.isDozeEnabled(context) && Utils.sensorsEnabled(context)) {
+            if (DEBUG) Log.d(TAG, "Starting service");
+            Utils.startService(context);
+        }
     }
+
 }

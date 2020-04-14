@@ -14,19 +14,23 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package org.mokee.settings.device;
 
 import android.os.Bundle;
 import android.provider.Settings;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
+import android.util.Log;
 
-public class CameraFocusPreferenceFragment extends PreferenceFragment {
+public class LeecoPreferenceFragment extends PreferenceFragment {
 
     private static final String KEY_CAMERA_FOCUS_FIX_ENABLE = "camera_focus_enable";
+    private static final String KEY_QUICK_CHARGE_ENABLE = "quick_charge_enable";
 
     private SwitchPreference mCameraFocusFixEnable;
+    private SwitchPreference mQuickChargeEnable;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -37,10 +41,23 @@ public class CameraFocusPreferenceFragment extends PreferenceFragment {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.leeco_settings_panel);
-
+        final PreferenceScreen prefSet = getPreferenceScreen();
         mCameraFocusFixEnable = (SwitchPreference) findPreference(KEY_CAMERA_FOCUS_FIX_ENABLE);
-        mCameraFocusFixEnable.setChecked(SettingsUtils.getCameraFocusFixEnabled(getActivity()));
-        mCameraFocusFixEnable.setOnPreferenceChangeListener(mCameraFocusFixPrefListener);
+        mQuickChargeEnable = (SwitchPreference) findPreference(KEY_QUICK_CHARGE_ENABLE);
+
+        if (SettingsUtils.supportsCameraFocusFix()) {
+            mCameraFocusFixEnable.setChecked(SettingsUtils.getCameraFocusFixEnabled(getActivity()));
+            mCameraFocusFixEnable.setOnPreferenceChangeListener(PrefListener);
+        } else {
+            prefSet.removePreference(mCameraFocusFixEnable);
+        }
+
+        if (SettingsUtils.supportsQuickChargeSwitch()) {
+            mQuickChargeEnable.setChecked(SettingsUtils.getQuickChargeEnabled(getActivity()));
+            mQuickChargeEnable.setOnPreferenceChangeListener(PrefListener);
+        } else {
+            prefSet.removePreference(mQuickChargeEnable);
+        }
     }
 
     @Override
@@ -49,7 +66,7 @@ public class CameraFocusPreferenceFragment extends PreferenceFragment {
         getListView().setPadding(0, 0, 0, 0);
     }
 
-    private Preference.OnPreferenceChangeListener mCameraFocusFixPrefListener =
+    private Preference.OnPreferenceChangeListener PrefListener =
         new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
@@ -59,6 +76,10 @@ public class CameraFocusPreferenceFragment extends PreferenceFragment {
                 boolean enabled = (boolean) value;
                 SettingsUtils.setCameraFocusFixEnabled(getActivity(), enabled);
                 SettingsUtils.writeCameraFocusFixSysfs(enabled);
+            } else if (KEY_QUICK_CHARGE_ENABLE.equals(key)) {
+                boolean enabled = (boolean) value;
+                SettingsUtils.setQuickChargeEnabled(getActivity(), enabled);
+                SettingsUtils.writeQuickChargeProp(enabled);
             }
 
             return true;
