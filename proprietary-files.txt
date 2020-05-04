@@ -82,16 +82,16 @@ lib/libarcsoft_antishaking.so:vendor/lib/libarcsoft_antishaking.so|15c2389297cb9
 lib/libarcsoft_beautyshot.so:vendor/lib/libarcsoft_beautyshot.so|06361821b4083fdf9de413cae9ab0a3bb5356378
 lib/libarcsoft_beautyshot_image_algorithm.so:vendor/lib/libarcsoft_beautyshot_image_algorithm.so|ff5f29a3d86e5d1d02ef9aea8aff0c1b94a77239
 lib/libarcsoft_beautyshot_video_algorithm.so:vendor/lib/libarcsoft_beautyshot_video_algorithm.so|386a8eab71964d5cc073715377cb085c86ac2708
-lib/libarcsoft_hdr.so:vendor/lib/libarcsoft_hdr.so|c02d407a4367ead9b1e887786550adbce22ca44c
-lib/libarcsoft_hdr_detection.so:vendor/lib/libarcsoft_hdr_detection.so|a94a7915ba1145af0850053327c1c3040a86fc23
-lib/libarcsoft_night_shot.so:vendor/lib/libarcsoft_night_shot.so|26a898ab06937d3d4ec0b6551c7c28811a487c6d
-lib/libarcsoft_nighthawk.so:vendor/lib/libarcsoft_nighthawk.so|5f9cd94087936583da924af94860ef4d4dfc41a4
-lib/libarcsoft_panorama_burstcapture.so:vendor/lib/libarcsoft_panorama_burstcapture.so|33e6f9a45b47307f6c37a888e6f00673d60e40f3
-lib/libarcsoft_smart_denoise.so:vendor/lib/libarcsoft_smart_denoise.so|1313342d9cdf57b58c6585f45348cc898a4f9caa
-lib/libcamera_letv_algo.so:vendor/lib/libcamera_letv_algo.so|36094639ed425aa622418b76bf56996ffb56ef8e
-lib/libletv_algo_jni.so:vendor/lib/libletv_algo_jni.so|a2b8336dc9e7c4dd49631257e5035b0cab231ff2
+lib/libarcsoft_hdr.so:vendor/lib/libarcsoft_hdr.so|370da45efd9cef3a316c6c679c4165dda2c5ba02
+lib/libarcsoft_hdr_detection.so:vendor/lib/libarcsoft_hdr_detection.so|460dc14545522cb30eb087d37cb7777752db0800
+lib/libarcsoft_night_shot.so:vendor/lib/libarcsoft_night_shot.so|a92b7ce5796c9db533b9cb5d5d345a4ae910ec09
+lib/libarcsoft_nighthawk.so:vendor/lib/libarcsoft_nighthawk.so|73635b4a1cae768acc6d64f1b601b38506a05c5e
+lib/libarcsoft_panorama_burstcapture.so:vendor/lib/libarcsoft_panorama_burstcapture.so|32ad2a070d623cb4ee3503f0cd085d365092d47b
+lib/libarcsoft_smart_denoise.so:vendor/lib/libarcsoft_smart_denoise.so|cc5513ec4b11b6846842aaaa9e1c6b01aa73dc46
+lib/libcamera_letv_algo.so:vendor/lib/libcamera_letv_algo.so|50773d418ac049fca986e1a0fc5fcc1a40e11751
+lib/libletv_algo_jni.so:vendor/lib/libletv_algo_jni.so|f1a7d31df90a10bfa555c075f196807fa7e48743
 lib/libmm-qcamera.so:vendor/lib/libmm-qcamera.so|deb158c1f08234912526c3eaa1b9db9806e1c4b7
-lib/libmpbase.so:vendor/lib/libmpbase.so|bdfbb1fb3a86e87a5db674f35c52e612ecc9f8c8
+lib/libmpbase.so:vendor/lib/libmpbase.so|f6f0a3ad248aa3caf17b5f90fa26fe529476cf7f
 lib/libmpkernel.so:vendor/lib/libmpkernel.so|4a7ca7a6b169ddd0c7f81fe4153852616da55013
 lib/libmpstream.so:vendor/lib/libmpstream.so|8624e671cd4dcefe6f92ba769865284066490ee5
 lib/libmputility.so:vendor/lib/libmputility.so|e1a55cdbc6753ab3718da297808ca635300240e8
@@ -114,7 +114,7 @@ vendor/lib/libmmcamera2_pproc_modules.so|1d96aba62349295bd767ef8f86990eb4c9f7cc3
 vendor/lib/libmmcamera2_q3a_core.so|92380218f4642986f6b60428743d4d181fc9c6f6
 vendor/lib/libmmcamera2_sensor_modules.so|3ee7fefbdae85cf38a43afaa3f1e47466207f98a
 vendor/lib/libmmcamera2_stats_algorithm.so|735e2f707763d8a8f6b8e58eae596bd93df23354
-vendor/lib/libmmcamera2_stats_modules.so|1af81d8e13a2ec00e0e011bdece48c54bbd79843
+vendor/lib/libmmcamera2_stats_modules.so|1b52080d2c78fdaddfa01f356a188a3b86b5b59c
 vendor/lib/libmmcamera_dbg.so|8769d090a61fb2d5ce06d51ff4a9c9ee89be6318
 vendor/lib/libmmcamera_dummyalgo.so|2da4909eb5e766ee79f5a8724958f55b855e2d43
 vendor/lib/libmmcamera_eebinparse.so|1bddad5cfbeddb130811509fecafe93cebfb1d15
@@ -135,7 +135,7 @@ vendor/lib/libmmcamera_paaf_lib.so|83f2a89000cd7c452c71c4a820bb6b2c9c26873b
 vendor/lib/libmmcamera_pdaf.so|860daf19dcb3930cf8a29034aa9e0931aa38219e
 vendor/lib/libmmcamera_pdafcamif.so|bb841ac8fb685cbf2f432cd80f9703bcc57e7d13
 vendor/lib/libmmcamera_ppbase_module.so|57cbbe13f800d6432214897175ce216428eb91b9
-vendor/lib/libmmcamera_ppeiscore.so|3f9492d0b6ba590c30addb74914a6676355a25cd
+vendor/lib/libmmcamera_ppeiscore.so|53e2782fe1ead8481fd085a3040107ff692b3c14
 vendor/lib/libmmcamera_thread_services.so|3108f2677f17c8caafb45a08330299b6a8eb921b
 vendor/lib/libmmcamera_tintless_algo.so|b8f9813e50f51ab664ea27b194e998a4e43fec18
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so|be10a554dd8eebb541df30aac919b735284ebfda
@@ -265,6 +265,7 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml|ff91feb5060a6df07e3e4d9bc99ae58bcc
 vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml|f76c894f3c6d5b6ed35113a088dc3174c900501b
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml|14d136e7fcc682311757d3edc0b9d3eaeba11815
 vendor/etc/init/cnd.rc|ff205cff8e00ec6805fd1e19f3ca6ff86700cbb6
+vendor/lib64/libcacertclient.so|daa1332db3b07eb75350dee833628bd248d9f03e
 vendor/lib64/libcne.so|4bd3419bb0398d1b2604ce5a8a5b5786d8d00578
 vendor/lib64/libcneapiclient.so|6f99dd4e82143a4ccccd3fb3ff4348140ddc1749
 vendor/lib64/libcneoplookup.so|f0bd13e3db5893ca61c0701e7c43dd355a4dfae5
@@ -273,6 +274,7 @@ vendor/lib64/libwms.so|ed3cc676c0951a462e81135159c53e4c79ed2bbd
 vendor/lib64/libwqe.so|5f9a4b5920fd22051355c9ab6b8dc32e27022048
 vendor/lib64/libxml.so|2c1a0141487fe37f906a6e7efb7a6f7e1b6c02dd
 vendor/lib64/vendor.qti.data.factory@2.0.so|3d394f6124db5ad1987c67737bbc30d4d761cecb
+vendor/lib64/vendor.qti.hardware.cacert@1.0.so|bb56f65d5251057a306a8175daef9571cfd3457b
 vendor/lib64/vendor.qti.hardware.data.cne.internal.api@1.0.so|ed05ca4c09b5913cf5c9d87267a59c25001ddd49
 vendor/lib64/vendor.qti.hardware.data.cne.internal.constants@1.0.so|981a7de823c8fe9e19516dce6dcc8414350109aa
 vendor/lib64/vendor.qti.hardware.data.cne.internal.server@1.0.so|9ed3d514093cd106590008e87f6170cf001a8519
@@ -283,6 +285,9 @@ vendor/lib64/vendor.qti.hardware.data.iwlan@1.0.so|f338ec0fe9c5f49ecd94e1835b6a1
 vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|53794a8d4dfeb0fbd233a4b128749a06d515c3f7
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so|35ad6e08d00e8b1695964fa7d6ddbc521eda8628
 vendor/lib64/vendor.qti.latency@2.0.so|0144eec541989f450695ec8cbdd595df4009fe1a
+
+# consumerir - from le_x10 (x850) - 7.1.1/LEXCNFN6061705181T/letv05181516
+-app/UEIQuicksetSDKLeTV/UEIQuicksetSDKLeTV.apk|b9b4a53a6465dbd9e1d1b6f1a8393313f5e72f64
 
 # DPM - from daisy - daisy_sprout:10/QKQ1.191002.002/V11.0.2.0.QDLMIXM
 product/bin/dpmd|cac8f3eadeeec202f56d5b5f7a8c75e82e376d9f
@@ -329,6 +334,12 @@ framework/izat.xt.srv.jar|98ffd12c789af16d186a4a04c0703a23dc27e347
 lib64/liblocationservice_jni.so|67a0cf23dada00aaef70df443658a2c6041d797d
 lib64/libxt_native.so|d023ae9678d7954285ad61903d73cac14a86e3ce
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk|bb395b0e751fd6c2cc66dde30542ab04997dadfd
+product/lib64/vendor.qti.gnss@1.0.so|bf11e2b7a104ed1689623f5a772269d24e00bd14
+product/lib64/vendor.qti.gnss@1.1.so|4b88888fcba1bc3f709889cbf086d9ba2b997b91
+product/lib64/vendor.qti.gnss@1.2.so|8073a3bfcfdc7aaf903852349bbbcd9e5d229d3e
+product/lib64/vendor.qti.gnss@2.0.so|f6f94bf22b8948c163b84cf092d86fdd25b39850
+product/lib64/vendor.qti.gnss@2.1.so|7f69b6098f779f6ed396bbf366b496b0b228c743
+product/lib64/vendor.qti.gnss@3.0.so|c5ed668d324e7c898ca026fc12dad8829cd8a944
 vendor/bin/loc_launcher|06793983f836a9b42b5ff3848f8fe177134c1379
 vendor/bin/lowi-server|1fe78b543c14196169ab411acfd9dabbfb4636dd
 vendor/bin/slim_daemon|925da604895b095d7e39cf84c7031c6825f32ac0

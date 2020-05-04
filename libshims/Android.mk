@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (C) 2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := \
-	GraphicBuffer.cpp
-
-LOCAL_SHARED_LIBRARIES := libui
-LOCAL_MODULE := libui_shim
+LOCAL_STATIC_LIBRARES := libgui
+LOCAL_MODULE := libfui
 LOCAL_MODULE_TAGS := optional
-
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_VENDOR_MODULE := true
 include $(BUILD_SHARED_LIBRARY)

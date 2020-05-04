@@ -40,7 +40,7 @@
 #define SYSINFO_H <SYSTEM_HEADER_PREFIX/sysinfo.h>
 #include SYSINFO_H
 #include "gralloc_priv.h"
-#include "graphics.h"
+#include "system/graphics.h"
 
 // Camera dependencies
 #include "QCameraBufferMaps.h"
@@ -3583,6 +3583,7 @@ int32_t QCameraParameters::setSceneMode(const QCameraParameters& params)
                 // If HDR is set from client  and the feature is not enabled in the backend, ignore it.
                 if (m_bHDRModeSensor && isSupportedSensorHdrSize(params)) {
                     m_bSensorHDREnabled = true;
+                    m_bHDREnabled = false;
                     LOGH("Sensor HDR mode Enabled");
                 } else {
                     m_bHDREnabled = true;
@@ -6401,6 +6402,13 @@ int32_t QCameraParameters::setPreviewFpsRange(int min_fps,
     /*This property get value should be the fps that user needs*/
     property_get("persist.debug.set.fixedfps", value, "0");
     fixedFpsValue = atoi(value);
+
+    // Don't allow function callers to request min fps same as max fps
+    // I mean SnapdragonCamera.
+    if (!isHfrMode() && max_fps >= 24000 && min_fps == max_fps) {
+        LOGH("min_fps %d same as max_fps %d, setting min_fps to 7000", min_fps, max_fps);
+        min_fps = 7000;
+    }
 
     LOGD("E minFps = %d, maxFps = %d , vid minFps = %d, vid maxFps = %d",
                  min_fps, max_fps, vid_min_fps, vid_max_fps);
