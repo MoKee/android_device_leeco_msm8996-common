@@ -49,7 +49,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.HAL3.enabled=1 \
     persist.camera.imglib.fddsp=1 \
     persist.camera.llc=1 \
-    persist.camera.llnoise=1
+    persist.camera.llnoise=1 \
+    vendor.camera.hal1.packagelist=com.facebook.katana,com.facebook.orca,com.instagram.android,com.viber.voip,com.whatsapp
 
 # CNE
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -117,7 +118,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
    persist.dbg.wfc_avail_ovr=1 \
    persist.radio.VT_ENABLE=1 \
    persist.radio.VT_HYBRID_ENABLE=1 \
-   persist.vendor.qti.telephony.vt_cam_interface=2
+   persist.vendor.qti.telephony.vt_cam_interface=1
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
