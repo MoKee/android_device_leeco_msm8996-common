@@ -28,10 +28,6 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     $(LOCAL_PATH)/overlay-mokee/mokee-sdk \
     $(LOCAL_PATH)/overlay/packages/apps/Snap
 
-# Init
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,${LOCAL_PATH}/prebuilt/vendor,$(TARGET_COPY_OUT_VENDOR))
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -136,6 +132,21 @@ PRODUCT_PACKAGES += \
     camera.msm8996 \
     libfui \
     Snap
+
+# Common config scripts
+PRODUCT_PACKAGES += \
+    init.proc_touchpanel.sh
+
+# Common init scripts
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.early_boot.sh \
+    init.qcom.rc \
+    init.qcom.sh \
+    init.qcom.power.rc \
+    init.qcom.usb.rc \
+    init.recovery.qcom.rc \
+    ueventd.qcom.rc \
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -327,17 +338,16 @@ PRODUCT_PACKAGES += \
     librecovery_updater_leeco
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/bin/sgdisk:root/system/bin/sgdisk \
-    $(LOCAL_PATH)/recovery/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc
+    $(LOCAL_PATH)/prebuilt/sgdisk:root/system/bin/sgdisk
 
 # Releasetools
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/bin/deunify.sh:install/bin/deunify.sh \
-    $(LOCAL_PATH)/prebuilt/bin/devinfo.sh:install/bin/devinfo.sh \
-    $(LOCAL_PATH)/prebuilt/bin/partprobe.sh:install/bin/partprobe.sh \
-    $(LOCAL_PATH)/prebuilt/bin/sgdisk:install/bin/sgdisk \
-    $(LOCAL_PATH)/prebuilt/bin/toybox:install/bin/toybox \
-    $(LOCAL_PATH)/prebuilt/bin/unlock-vendor.sh:install/bin/unlock-vendor.sh
+    $(LOCAL_PATH)/prebuilt/deunify.sh:install/bin/deunify.sh \
+    $(LOCAL_PATH)/prebuilt/devinfo.sh:install/bin/devinfo.sh \
+    $(LOCAL_PATH)/prebuilt/partprobe.sh:install/bin/partprobe.sh \
+    $(LOCAL_PATH)/prebuilt/sgdisk:install/bin/sgdisk \
+    $(LOCAL_PATH)/prebuilt/toybox:install/bin/toybox \
+    $(LOCAL_PATH)/prebuilt/unlock-vendor.sh:install/bin/unlock-vendor.sh
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -373,11 +383,15 @@ PRODUCT_PACKAGES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
-    ims-ext-common_system \
+    ims-ext-common \
+    ims_ext_common.xml \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
-    ims-ext-common_system \
     telephony-ext
 
 # TextClassifier smart selection model files
