@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.lineageos.consumerirtransmitter" android:versionCode="1" android:versionName="1.2" android:sharedUserId="android.uid.system">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.mokee.consumerirtransmitter" android:versionCode="1" android:versionName="1.2" android:sharedUserId="android.uid.system">
 
     <application android:label="ConsumerirTransmitter"
         android:name=".MainApplication"
@@ -25,7 +25,7 @@
         <receiver android:name=".Startup">
             <intent-filter android:priority="99">
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="lineageos.intent.action.INITIALIZE_LINEAGE_HARDWARE" />
+                <action android:name="mokee.intent.action.INITIALIZE_MOKEE_HARDWARE" />
             </intent-filter>
         </receiver>
 

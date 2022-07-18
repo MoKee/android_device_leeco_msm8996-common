@@ -1,3 +1,3 @@
--keep class org.lineageos.consumerirtransmitter.* {
+-keep class org.mokee.consumerirtransmitter.* {
   *;
 }

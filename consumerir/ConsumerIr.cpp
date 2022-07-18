@@ -42,7 +42,7 @@ int ConsumerIr::sendMsg(const char* msg) {
         LOG(ERROR) << "could not create socket";
         return -1;
     }
-    char const* name = "org.lineageos.consumerirtransmitter.localsocket";
+    char const* name = "org.mokee.consumerirtransmitter.localsocket";
     remote.sun_path[0] = '\0'; /* abstract namespace */
     strcpy(remote.sun_path + 1, name);
     remote.sun_family = AF_UNIX;

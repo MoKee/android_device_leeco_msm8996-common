@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.lineageos.settings.device"
+    package="org.mokee.settings.device"
     android:versionCode="3"
     android:versionName="3.0"
     android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.DEVICE_POWER" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="lineageos.permission.HARDWARE_ABSTRACTION_ACCESS" />
+    <uses-permission android:name="mokee.permission.HARDWARE_ABSTRACTION_ACCESS" />
 
     <uses-sdk
         android:minSdkVersion="26"
@@ -18,10 +18,10 @@
         android:label="@string/device_settings_app_name"
         android:persistent="true">
 
-        <receiver android:name="org.lineageos.settings.device.BootCompletedReceiver">
+        <receiver android:name="org.mokee.settings.device.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="lineageos.intent.action.INITIALIZE_LINEAGE_HARDWARE" />
+                <action android:name="mokee.intent.action.INITIALIZE_MOKEE_HARDWARE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>

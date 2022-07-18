@@ -13,9 +13,9 @@
 // limitations under the License.
 
 cc_binary {
-    name: "vendor.lineage.touch@1.0-service.leeco_8996",
-    init_rc: ["vendor.lineage.touch@1.0-service.leeco_8996.rc"],
-    vintf_fragments: ["vendor.lineage.touch@1.0-service.leeco_8996.xml"],
+    name: "vendor.mokee.touch@1.0-service.leeco_8996",
+    init_rc: ["vendor.mokee.touch@1.0-service.leeco_8996.rc"],
+    vintf_fragments: ["vendor.mokee.touch@1.0-service.leeco_8996.xml"],
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     vendor: true,
@@ -27,7 +27,7 @@ cc_binary {
         "libbase",
         "libhidlbase",
         "libutils",
-        "vendor.lineage.touch@1.0",
+        "vendor.mokee.touch@1.0",
     ],
     header_libs: [
         "libbinder_headers",

@@ -28,7 +28,7 @@
 
 # copy devinfo partition info to a vendor prop
 
-# Check if this is Lineage Recovery
+# Check if this is MoKee Recovery
 LOSRECOVERY=/sbin/toybox
 
 if test -f "$LOSRECOVERY"; then

@@ -30,7 +30,7 @@
 
 BLOCKDEV=$1
 
-# Check if this is Lineage Recovery
+# Check if this is MoKee Recovery
 LOSRECOVERY=/sbin/toybox
 
 if test -f "$LOSRECOVERY"; then
